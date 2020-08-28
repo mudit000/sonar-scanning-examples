@@ -4,7 +4,24 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+   include:
+     - master
+  paths:
+    include:
+    - sonar-scanning-examples/sonarqube-scanner-maven/maven-multimodule
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'package verify sonar:sonar'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 
 pool:
   vmImage: 'ubuntu-latest'
