@@ -16,7 +16,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
+- script: ls -lrt
   displayName: 'Run a one-line script'
 
 - task: Maven@3
