@@ -9,7 +9,7 @@ trigger:
      - master
   paths:
     include:
-    - sonar-scanning-examples/sonarqube-scanner-maven/maven-multimodule
+    - sonarqube-scanner-maven/maven-multimodule
           
 
 pool:
@@ -21,7 +21,7 @@ steps:
 
 - task: Maven@3
   inputs:
-    mavenPomFile: 'sonar-scanning-examples/sonarqube-scanner-maven/maven-multimodule/pom.xml'
+    mavenPomFile: 'sonarqube-scanner-maven/maven-multimodule/pom.xml'
     goals: 'package verify sonar:sonar'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
